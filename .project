@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Starling</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.adobe.flexbuilder.project.flexbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.adobe.flexbuilder.project.actionscriptnature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>[source path] Hi-ReS Stats-src</name>
+			<type>2</type>
+			<locationURI>DOCUMENTS/Extensions/Hi-ReS%20Stats/src</locationURI>
+		</link>
+		<link>
+			<name>[source path] com</name>
+			<type>2</type>
+			<locationURI>DOCUMENTS/Extensions/greensock-v12-as3/greensock-v12-as3/com</locationURI>
+		</link>
+		<link>
+			<name>[source path] starling-src</name>
+			<type>2</type>
+			<locationURI>DOCUMENTS/Extensions/Starling%20Framework/starling/src</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
