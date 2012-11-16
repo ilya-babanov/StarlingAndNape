@@ -56,6 +56,22 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
+			configureSpace();
+			
+			configureListeners();
+			
+		}
+		
+		private function configureListeners():void
+		{
+			addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			this.stage.addEventListener(TouchEvent.TOUCH, onTouch);
+			this.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			this.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+		}
+		
+		private function configureSpace():void
+		{
 			space = new Space(new Vec2(0,3000));
 			
 			var borders:Body = new Body(BodyType.STATIC);
@@ -64,24 +80,13 @@ package
 			borders.shapes.add(new Polygon(Polygon.rect(1270,0, 150, 800)));
 			borders.space = space;
 			
-			/*	
-			var wall:Body = new Body(BodyType.STATIC);
-			wall.shapes.add(new Polygon(Polygon.rect(0,0,100, 800)));
-			wall.shapes.add(new Polygon(Polygon.rect(1270,0, 150, 800)));
-			wall.space = space;
-			*/
-			
 			hand = new PivotJoint(space.world,space.world,new Vec2(),new Vec2());
 			hand.active = false;
 			hand.stiff = false;
 			hand.space = space;
-			addEventListener(Event.ENTER_FRAME, onEnterFrame);
-			this.stage.addEventListener(TouchEvent.TOUCH, onTouch);
-			this.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-			this.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyU);
 		}
 		
-		private function onKeyU(e:KeyboardEvent):void
+		private function onKeyUp(e:KeyboardEvent):void
 		{
 			shiftKey = false;
 		}
@@ -136,14 +141,6 @@ package
 				hand.active = true;
 				break;
 			}
-			
-			/*var ball:SpriteEx = touch.target.parent as SpriteEx;
-			if(ball){
-				ball.x = touch.globalX - (ball.width>>1);
-				ball.y = touch.globalY - (ball.height>>1);
-				ball.particles.emitterX = ball.x + 50;
-				ball.particles.emitterY = ball.y + 50;
-			}*/
 		}
 		
 		
@@ -168,23 +165,8 @@ package
 			bodyForSimpleBall.space = space;
 			
 			addChild(bodyForSimpleBall.graphic); 
-			
-			/*var ballImage:SpriteEx = new SpriteEx();//Image.fromBitmap(new SimpleBallImage());  //new SimpleBallImage();]
-			addChild(ballImage);
-			ballImage.addChild(Image.fromBitmap(new SimpleBallImage()));
-			ballImage.x = x - (ballImage.width>>1);
-			ballImage.y = y - (ballImage.height>>1);
-			
-				
-			var particle:PDParticleSystem = new PDParticleSystem(XML(new ParticleXML()), Texture.fromBitmap(new ParticleTexture()));
-			particle.start();
-			particle.emitterX = ballImage.x + 50;
-			particle.emitterY = ballImage.y + 50;
-			addChildAt(particle,0);
-			Starling.juggler.add(particle);
-			ballImage.particles = particle;
-			ballImage.addEventListener(TouchEvent.TOUCH, onTouch);*/
 		}
+		
 		private function addSimpleBall(x:Number, y:Number):void
 		{
 			var bodyForSimpleBall:BodyExt = new BodyExt(BodyType.DYNAMIC, new Vec2(x, y));
