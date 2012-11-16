@@ -17,7 +17,6 @@ package
 	import nape.shape.Circle;
 	import nape.shape.Polygon;
 	import nape.space.Space;
-	import nape.util.BitmapDebug;
 	
 	import starling.core.Starling;
 	import starling.display.DisplayObject;
@@ -46,7 +45,9 @@ package
 		
 		[Embed(source="./Particles/TestParticle4.pex", mimeType="application/octet-stream")]
 		private var ParticleXML:Class;
-		
+
+		private var shiftKey:Boolean = false;
+
 		public function AppMain()
 		{
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
@@ -57,27 +58,26 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			
 			configureSpace();
-			
 			configureListeners();
-			
 		}
 		
 		private function configureListeners():void
 		{
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
-			this.stage.addEventListener(TouchEvent.TOUCH, onTouch);
-			this.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-			this.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+			stage.addEventListener(TouchEvent.TOUCH, onTouch);
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 		}
 		
 		private function configureSpace():void
 		{
-			space = new Space(new Vec2(0,3000));
+			space = new Space(new Vec2(0,4000));
 			
 			var borders:Body = new Body(BodyType.STATIC);
-			borders.shapes.add(new Polygon(Polygon.rect(0,800,1280,50)));
-			borders.shapes.add(new Polygon(Polygon.rect(0,0,100, 800)));
-			borders.shapes.add(new Polygon(Polygon.rect(1270,0, 150, 800)));
+			borders.shapes.add(new Polygon(Polygon.rect(0,stage.stageHeight,stage.stageWidth,100)));
+			borders.shapes.add(new Polygon(Polygon.rect(-100,0,100, stage.stageHeight)));
+			borders.shapes.add(new Polygon(Polygon.rect(stage.stageWidth,0, 100, stage.stageHeight)));
+			borders.shapes.add(new Polygon(Polygon.rect(0,-100, stage.stageWidth, 100)));
 			borders.space = space;
 			
 			hand = new PivotJoint(space.world,space.world,new Vec2(),new Vec2());
@@ -91,7 +91,6 @@ package
 			shiftKey = false;
 		}
 		
-		private var shiftKey:Boolean = false;
 		private function onKeyDown(e:KeyboardEvent):void
 		{
 			if(e.keyCode==Keyboard.SHIFT){
@@ -154,7 +153,6 @@ package
 			var bodyForSimpleBall:BodyExt = new BodyExt(BodyType.DYNAMIC, new Vec2(x, y));
 			bodyForSimpleBall.shapes.add(new Circle(48, null, new Material(1.3)));
 			bodyForSimpleBall.graphic = new SimpleBall();
-			
 			var particle:PDParticleSystem = new PDParticleSystem(XML(new ParticleXML()), Texture.fromBitmap(new ParticleTexture()));
 			particle.start();
 			addChild(particle);
@@ -170,7 +168,7 @@ package
 		private function addSimpleBall(x:Number, y:Number):void
 		{
 			var bodyForSimpleBall:BodyExt = new BodyExt(BodyType.DYNAMIC, new Vec2(x, y));
-			bodyForSimpleBall.shapes.add(new Circle(48, null, new Material(1.3)));
+			bodyForSimpleBall.shapes.add(new Circle(48, null, Material.rubber()));
 			bodyForSimpleBall.graphic = new SimpleBall();
 			
 			bodyForSimpleBall.graphicUpdate = updateGraphics;
