@@ -7,7 +7,7 @@ package
 	import net.hires.debug.Stats;
 	import starling.core.Starling;
 	
-	[SWF(width="1280", height="800", frameRate="60", backgroundColor="#000000")]
+	[SWF(width="768", height="1024", frameRate="60", backgroundColor="#000000")]
 	public class StarlingApp extends Sprite
 	{
 		private var starlingEngine:Starling;

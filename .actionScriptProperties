@@ -4,7 +4,7 @@
     <compilerSourcePath>
       <compilerSourcePathEntry kind="1" linkType="1" path="${DOCUMENTS}/Extensions/Starling Framework/starling/src"/>
       <compilerSourcePathEntry kind="1" linkType="1" path="${DOCUMENTS}/Extensions/Hi-ReS Stats/src"/>
-      <compilerSourcePathEntry kind="1" linkType="1" path="${DOCUMENTS}/Extensions/greensock-as3/com"/>
+      <compilerSourcePathEntry kind="1" linkType="1" path="${DOCUMENTS}/Extensions/greensock-v12-as3/greensock-v12-as3/com"/>
     </compilerSourcePath>
     <libraryPath defaultLinkType="1">
       <libraryPathEntry kind="4" path="">
