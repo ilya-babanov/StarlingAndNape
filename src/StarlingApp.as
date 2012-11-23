@@ -16,8 +16,8 @@ package
 		{
 			addChild(new Stats());
 			
-			stage.align = StageAlign.TOP;
-			stage.scaleMode = StageScaleMode.NO_SCALE;
+			//stage.align = StageAlign.TOP;
+			//stage.scaleMode = StageScaleMode.NO_SCALE;
 			
 			starlingEngine = new Starling(AppMain, stage, null, null);
 			

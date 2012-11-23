@@ -7,22 +7,37 @@ package VisualGameElements
 	import starling.extensions.PDParticleSystem;
 	import starling.extensions.Particle;
 	import starling.textures.Texture;
+	import starling.utils.Color;
 	
-	public class SimpleBall extends Sprite
+	public class AimSimpleGreenDarkDisk extends Sprite
 	{
-		[Embed(source="./EmbedElements/YellowRedDisk.png")]
-		private var SimpleBallImage:Class;
+		[Embed(source="./EmbedElements/LittleDisk.png")]
+		private var LittleDiskImg:Class;
 		
+		/*	
 		[Embed(source="./Particles/TestParticle.png")]
 		private var ParticleTexture:Class;
 		
 		[Embed(source="./Particles/TestParticle.pex", mimeType="application/octet-stream")]
 		private var ParticleXML:Class;
-		
+		*/
 		
 		private var particle:PDParticleSystem;
+		private var image:Image;
 		
-		public function SimpleBall()
+		public function set color(value:uint):void
+		{
+			if(image)
+				image.color = value;
+		}
+		public function get color():uint
+		{
+			if(image)
+				return image.color;
+			else 
+				return null;
+		}
+		public function AimSimpleGreenDarkDisk()
 		{
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		}
@@ -30,7 +45,9 @@ package VisualGameElements
 		private function onAddedToStage():void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
-			addChild(Image.fromBitmap(new SimpleBallImage()));
+			image = Image.fromBitmap(new LittleDiskImg());
+			//image.color = Color.GREEN;
+			addChild(image);
 			pivotX = width >> 1;
 			pivotY = height >> 1;
 		}
