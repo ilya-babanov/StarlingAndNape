@@ -6,6 +6,7 @@ package
 	
 	import com.greensock.TweenLite;
 	
+	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -18,7 +19,9 @@ package
 	import nape.shape.Circle;
 	import nape.space.Broadphase;
 	import nape.space.Space;
+	import nape.util.BitmapDebug;
 	
+	import starling.core.Starling;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.events.Touch;
@@ -37,6 +40,7 @@ package
 		public var waveCount:int;
 		
 		private var bodyEngine:BodyEngine;
+		private var debug:BitmapDebug;
 		
 		public function AppMain()
 		{
@@ -60,7 +64,12 @@ package
 			space.worldLinearDrag = 0.3;
 			space.worldAngularDrag = 0.9;
 			*/
-			
+			/*debug = new BitmapDebug(768, 1024, 0x33333333);
+			debug.draw(space);
+			var MovieClipDebug:MovieClip = new flash.display.MovieClip();
+			MovieClipDebug.addChild(debug.display);
+			Starling.current.nativeOverlay.addChild(MovieClipDebug);
+			*/
 			hand = new PivotJoint(space.world,space.world,new Vec2(),new Vec2());
 			hand.active = false;
 			hand.stiff = false;
@@ -124,7 +133,7 @@ package
 				}
 			}*/
 			for (var x:int = 0; x < stage.stageWidth; x+=24){
-				for(var y:int = 0; y < 333; y+=24){
+				for(var y:int = 0; y < 133; y+=24){
 					bodyEngine.addSimpleAim(x,y);
 				}
 			}
@@ -184,7 +193,10 @@ package
 		
 		private function onEnterFrame():void
 		{
+			//debug.clear();
 			space.step(1/60);
+			/*debug.draw(space);
+			debug.flush();*/
 			bodyEngine.removeDeletedBodies();
 		}
 	}
