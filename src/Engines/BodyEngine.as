@@ -95,7 +95,7 @@ package Engines
 			borders.shapes.add(new Polygon(Polygon.rect(stage.stageWidth,0, 100, stage.stageHeight)));
 			top.shapes.add(new Polygon(Polygon.rect(0,-100, stage.stageWidth, 100)));
 			floor.cbTypes.add(diskBodies);
-			//borders.cbTypes.add(diskBodies);
+			borders.cbTypes.add(diskBodies);
 			borders.space = space;
 			floor.space = space;
 			top.space = space;
@@ -112,7 +112,7 @@ package Engines
 					var circle:Circle = new Circle(32, null, new Material(1.3));
 					bodyForDisk.circleShape = circle;
 					bodyForDisk.gravMass = 0;
-					//bodyForDisk.shapes.add(new Circle(32, null, new Material(1.3)));
+					bodyForDisk.shapes.add(new Circle(32, null, new Material(1.3)));
 					bodyForDisk.graphic = new DiskSimpleGrey();
 					bodyForDisk.cbTypes.add(diskBodies);
 					particleForDisk = new PDParticleSystem(XML(new ParticleXML()), Texture.fromBitmap(new ParticleTexture()));
@@ -141,17 +141,17 @@ package Engines
 					bodyForAim.cbTypes.add(aimBodies);
 					var disk:Circle = new Circle(12,null,Material.rubber());
 					disk.body = bodyForAim;
-				//	bodyForAim.graphic = new AimSimpleGreenDarkDisk();
+					bodyForAim.graphic = new AimSimpleGreenDarkDisk();
 					break;
 				default:
 					
 					break;
 			}
-			/*aimBox.shapes.add(new Polygon(Polygon.box(32,32)));
+		/*	aimBox.shapes.add(new Polygon(Polygon.box(32,32)));
 			aimBox.graphic = new LittleBox();*/
 			//bodyForAim.graphicUpdate = updateAimGraphic;
 			bodyForAim.space = space;
-			//stage.addChild(bodyForAim.graphic);
+			stage.addChild(bodyForAim.graphic);
 		}
 		
 		private function updateAimGraphic(b:BodyExt):void
@@ -159,8 +159,8 @@ package Engines
 			b.graphic.x = b.position.x;
 			b.graphic.y = b.position.y;
 			b.graphic.rotation = b.rotation;
-			/*
-			if (b.graphic.y > 1024) {
+			
+			/*if (b.graphic.y < -100) {
 				aimsToDelete.push(b);
 			}*/
 		}
