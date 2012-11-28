@@ -149,7 +149,7 @@ package Engines
 			}
 		/*	aimBox.shapes.add(new Polygon(Polygon.box(32,32)));
 			aimBox.graphic = new LittleBox();*/
-			//bodyForAim.graphicUpdate = updateAimGraphic;
+			bodyForAim.graphicUpdate = updateAimGraphic;
 			bodyForAim.space = space;
 			stage.addChild(bodyForAim.graphic);
 		}
