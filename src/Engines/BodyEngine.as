@@ -185,13 +185,11 @@ package Engines
 		}
 		
 		public function deleteDisk(b:BodyExt):void{
-			trace("deleteStarted");
 			space.bodies.remove(b);
 			stage.removeChild(b.graphic);
 			Starling.juggler.remove(b.particles);
 			stage.removeChild(b.particles);
 			b = null;
-			trace("delete");
 		}
 		
 		public function removeDeletedBodies():void
