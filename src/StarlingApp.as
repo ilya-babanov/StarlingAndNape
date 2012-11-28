@@ -18,7 +18,7 @@ package
 			
 			//stage.align = StageAlign.TOP;
 			//stage.scaleMode = StageScaleMode.NO_SCALE;
-			
+			//test
 			starlingEngine = new Starling(AppMain, stage, null, null);
 			
 			//starlingEngine.antiAliasing = 1;
