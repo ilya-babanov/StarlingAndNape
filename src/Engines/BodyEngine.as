@@ -202,7 +202,6 @@ package Engines
 				if(hand.body2 == aimBody)
 					hand.active = false;
 				space.bodies.remove(aimBody);
-				//aimBody.graphic.color = Color.RED;
 				TweenLite.to(aimBody.graphic,0.3,{alpha: 0, scaleX: 3, scaleY: 3, onComplete: deleteAim, onCompleteParams: [aimBody]});
 			}
 			for each (var explodedBody:BodyExt in explodedDisks){
