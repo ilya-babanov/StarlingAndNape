@@ -152,8 +152,6 @@ package
 							for(var j:uint = 0; j < 20; j++)
 								bodyEngine.addSimpleAim(touch.globalX,touch.globalY);
 						}
-						/*if(shiftKey)
-						addSimpleBall(touch.globalX,touch.globalY);*/
 						onTouchDownDrag(touch);
 						break;
 					//move
