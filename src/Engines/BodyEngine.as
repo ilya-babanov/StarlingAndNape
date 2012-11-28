@@ -81,7 +81,7 @@ package Engines
 			}	
 			if(cb.int2 is BodyExt){
 				(cb.int2 as BodyExt).numberOfCollisions++;
-				if((cb.int2 as BodyExt).numberOfCollisions > 5)
+				if((cb.int2 as BodyExt).numberOfCollisions > 6)
 					explodedDisks.push(cb.int2);
 			}
 		}	
@@ -95,7 +95,7 @@ package Engines
 			borders.shapes.add(new Polygon(Polygon.rect(stage.stageWidth,0, 100, stage.stageHeight)));
 			top.shapes.add(new Polygon(Polygon.rect(0,-100, stage.stageWidth, 100)));
 			floor.cbTypes.add(diskBodies);
-			borders.cbTypes.add(diskBodies);
+			//borders.cbTypes.add(diskBodies);
 			borders.space = space;
 			floor.space = space;
 			top.space = space;
